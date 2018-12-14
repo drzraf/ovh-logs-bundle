@@ -1,0 +1,13 @@
+parameters:
+    ovh_logs.port: 12201
+
+services:
+    _defaults:
+        autowire: true
+        public: true
+
+    Chaplean\Bundle\OvhLogsBundle\Processor\OvhLogsProcessor:
+        arguments:
+            $token: '%ovh_logs.token%'
+        tags:
+            - { name: monolog.processor, method: processRecord, handler: 'ovh' }

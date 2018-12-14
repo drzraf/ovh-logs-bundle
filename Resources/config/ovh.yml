@@ -1,0 +1,8 @@
+monolog:
+    handlers:
+        ovh:
+            type:   gelf
+            publisher:
+                hostname: %ovh_logs.hostname%
+                port:     %ovh_logs.port%
+            level:  info

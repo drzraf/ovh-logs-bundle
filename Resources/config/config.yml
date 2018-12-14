@@ -1,0 +1,4 @@
+monolog:
+    handlers:
+        ovh:
+            type: 'null'
