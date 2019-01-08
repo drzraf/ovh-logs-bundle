@@ -1,6 +1,6 @@
 parameters:
-    ovh_logs.env: null
-    ovh_logs.port: 12201
+    ovh_logs.extra_fields: ~
+    ovh_logs.port: 2202
 
 services:
     _defaults:
@@ -10,6 +10,6 @@ services:
     Chaplean\Bundle\OvhLogsBundle\Processor\OvhLogsProcessor:
         arguments:
             $token: '%ovh_logs.token%'
-            $env: '%ovh_logs.env%'
+            $extraFields: '%ovh_logs.extra_fields%'
         tags:
             - { name: monolog.processor, method: processRecord, handler: 'ovh' }

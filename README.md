@@ -37,10 +37,10 @@ First you must create some parameters.
 parameters.yml:
 ```yaml
 parameters:
-    ovh_logs.env:      null                                 # optional
-    ovh_logs.hostname: hostname                             # required
-    ovh_logs.port:     12201                                # optional, defaults to 12201
-    ovh_logs.token:    01234567-89ab-cdef-0123-456789abcdef # required
+    ovh_logs.extra_fields: ~                                    # optional, defaults to null
+    ovh_logs.hostname:     hostname                             # required
+    ovh_logs.port:         2202                                 # optional, defaults to 2202
+    ovh_logs.token:        01234567-89ab-cdef-0123-456789abcdef # required
 ```
 
 The bundle configuration consists of two files:
@@ -59,6 +59,15 @@ config_prod.yml:
 ```yaml
 imports:
     - { resource: '@ChapleanOvhLogsBundle/Resources/config/ovh.yml' }
+```
+
+Optionally if you want to set extra fields, redefine the `ovh_logs.extra_fields` parameter.
+
+```yaml
+parameters:
+    ovh_logs.extra_fields:
+        _env:  dev
+        _user: 1
 ```
 
 Optionally if you want to override the default log level, redefine the `level` key of the `ovh` handler.
