@@ -28,4 +28,18 @@ class OvhLogsProcessorTest extends TestCase
 
         $this->assertSame(['extra' => ['X-OVH-TOKEN' => 'token']], $result);
     }
+
+    /**
+     * @covers \Chaplean\Bundle\OvhLogsBundle\Processor\OvhLogsProcessor::__construct()
+     * @covers \Chaplean\Bundle\OvhLogsBundle\Processor\OvhLogsProcessor::processRecord()
+     *
+     * @return void
+     */
+    public function testProcessRecordAddsTheEnv()
+    {
+        $processor = new OvhLogsProcessor('token', 'env');
+        $result = $processor->processRecord([]);
+
+        $this->assertSame(['extra' => ['X-OVH-TOKEN' => 'token', 'env' => 'env']], $result);
+    }
 }

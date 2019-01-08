@@ -18,13 +18,20 @@ class OvhLogsProcessor
     protected $token;
 
     /**
+     * @var string|null
+     */
+    protected $env;
+
+    /**
      * OvhLogProcessor constructor.
      *
-     * @param string $token
+     * @param string      $token
+     * @param string|null $env
      */
-    public function __construct(string $token)
+    public function __construct(string $token, string $env = null)
     {
         $this->token = $token;
+        $this->env = $env;
     }
 
     /**
@@ -35,6 +42,10 @@ class OvhLogsProcessor
     public function processRecord(array $record)
     {
         $record['extra']['X-OVH-TOKEN'] = $this->token;
+
+        if ($this->env !== null) {
+            $record['extra']['env'] = $this->env;
+        }
 
         return $record;
     }

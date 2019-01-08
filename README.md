@@ -37,6 +37,7 @@ First you must create some parameters.
 parameters.yml:
 ```yaml
 parameters:
+    ovh_logs.env:      null                                 # optional
     ovh_logs.hostname: hostname                             # required
     ovh_logs.port:     12201                                # optional, defaults to 12201
     ovh_logs.token:    01234567-89ab-cdef-0123-456789abcdef # required
